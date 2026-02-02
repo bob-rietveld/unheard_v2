@@ -2,14 +2,30 @@
   "name": "unheard_v2",
   "version": "1.0.0",
   "description": "Packages for Unheard",
-  "main": "main.js",
+  "type": "module",
+  "main": "dist-electron/main.js",
   "scripts": {
-    "start": "electron .",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^40.1.0"
+    "@types/node": "^25.2.0",
+    "@vitejs/plugin-react": "^5.1.3",
+    "electron": "^40.1.0",
+    "electron-builder": "^26.7.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-electron": "^0.29.0",
+    "vite-plugin-electron-renderer": "^0.14.6"
+  },
+  "dependencies": {
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   }
 }

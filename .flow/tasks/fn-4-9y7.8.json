@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-02T21:36:00.219178Z",
+  "depends_on": [],
+  "epic": "fn-4-9y7",
+  "id": "fn-4-9y7.8",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-4-9y7.8.md",
+  "status": "todo",
+  "title": "E2E test: Dataset \u2192 Discovery \u2192 Surprising insights",
+  "updated_at": "2026-02-02T21:36:00.219293Z"
+}

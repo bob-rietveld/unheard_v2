@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-02T21:35:23.111550Z",
+  "depends_on": [],
+  "epic": "fn-2-cae",
+  "id": "fn-2-cae.2",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-2-cae.2.md",
+  "status": "todo",
+  "title": "Implement CSV parser with schema detection",
+  "updated_at": "2026-02-02T21:35:23.111644Z"
+}

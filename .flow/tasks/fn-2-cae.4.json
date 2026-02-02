@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-02T21:35:23.238339Z",
+  "depends_on": [],
+  "epic": "fn-2-cae",
+  "id": "fn-2-cae.4",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-2-cae.4.md",
+  "status": "todo",
+  "title": "Build Context Library UI (upload, browse documents)",
+  "updated_at": "2026-02-02T21:35:23.238428Z"
+}

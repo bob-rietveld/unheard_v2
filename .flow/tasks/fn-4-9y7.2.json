@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-02T21:35:59.842174Z",
+  "depends_on": [],
+  "epic": "fn-4-9y7",
+  "id": "fn-4-9y7.2",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-4-9y7.2.md",
+  "status": "todo",
+  "title": "Implement parallel node expansion for MCTS",
+  "updated_at": "2026-02-02T21:35:59.842270Z"
+}
