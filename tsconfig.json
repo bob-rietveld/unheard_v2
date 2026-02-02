@@ -21,7 +21,13 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Node */
-    "types": ["node"]
+    "types": ["node"],
+
+    /* Path aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src", "electron"],
   "references": [{ "path": "./tsconfig.node.json" }]
