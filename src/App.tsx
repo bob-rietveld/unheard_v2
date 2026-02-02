@@ -1,31 +1,27 @@
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ConvexProvider, ConvexReactClient } from 'convex/react';
+import Layout from './components/Layout';
+import HomePage from './pages/HomePage';
+import PersonasPage from './pages/PersonasPage';
+import ExperimentsPage from './pages/ExperimentsPage';
+import ResultsPage from './pages/ResultsPage';
+
+const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: '100vh',
-      fontFamily: 'system-ui, -apple-system, sans-serif'
-    }}>
-      <h1>Unheard V2</h1>
-      <p>Electron + Vite + TypeScript + React</p>
-      <button
-        onClick={() => setCount((count) => count + 1)}
-        style={{
-          padding: '10px 20px',
-          fontSize: '16px',
-          cursor: 'pointer',
-          marginTop: '20px'
-        }}
-      >
-        Count is {count}
-      </button>
-    </div>
+    <ConvexProvider client={convex}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="personas" element={<PersonasPage />} />
+            <Route path="experiments" element={<ExperimentsPage />} />
+            <Route path="results" element={<ResultsPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ConvexProvider>
   );
 }
 
