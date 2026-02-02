@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-02T13:47:11.371828Z",
+  "depends_on": [],
+  "epic": "fn-9-oo1",
+  "id": "fn-9-oo1.13",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-9-oo1.13.md",
+  "status": "todo",
+  "title": "Integrate with context system (pitch deck upload)",
+  "updated_at": "2026-02-02T13:47:11.371926Z"
+}

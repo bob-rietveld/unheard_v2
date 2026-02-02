@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-02T11:44:27.887068Z",
+  "depends_on": [],
+  "epic": "fn-1-h3q",
+  "id": "fn-1-h3q.4",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-1-h3q.4.md",
+  "status": "todo",
+  "title": "Build Home page with navigation",
+  "updated_at": "2026-02-02T11:44:27.887167Z"
+}

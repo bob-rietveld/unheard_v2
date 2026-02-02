@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-02T11:44:39.233942Z",
+  "depends_on": [],
+  "epic": "fn-1-h3q",
+  "id": "fn-1-h3q.9",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-1-h3q.9.md",
+  "status": "todo",
+  "title": "Build Results page (display responses + sentiment)",
+  "updated_at": "2026-02-02T11:44:39.234034Z"
+}

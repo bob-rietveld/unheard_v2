@@ -1,0 +1,13 @@
+{
+  "branch_name": "fn-2-cae",
+  "created_at": "2026-02-02T11:43:42.320677Z",
+  "depends_on_epics": [],
+  "id": "fn-2-cae",
+  "next_task": 1,
+  "plan_review_status": "unknown",
+  "plan_reviewed_at": null,
+  "spec_path": ".flow/specs/fn-2-cae.md",
+  "status": "open",
+  "title": "SLICE 2: Context Upload & Personas (Week 3-4)",
+  "updated_at": "2026-02-02T11:43:42.320785Z"
+}
