@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Id } from '../../convex/_generated/dataModel';
@@ -82,9 +82,9 @@ export default function ExperimentWizard({
     setStep(3);
   };
 
-  const handleStep3Submit = (data: z.infer<typeof personasSchema>) => {
+  const handleStep3Submit = async (data: z.infer<typeof personasSchema>) => {
     const finalData = { ...stepData, ...data } as ExperimentFormData;
-    onSubmit(finalData);
+    await onSubmit(finalData);
   };
 
   const handleBack = () => {
@@ -98,10 +98,14 @@ export default function ExperimentWizard({
     if (currentPersonas.includes(personaId)) {
       personasForm.setValue(
         'personas',
-        currentPersonas.filter((id) => id !== personaId)
+        currentPersonas.filter((id) => id !== personaId),
+        { shouldValidate: true, shouldDirty: true }
       );
     } else {
-      personasForm.setValue('personas', [...currentPersonas, personaId]);
+      personasForm.setValue('personas', [...currentPersonas, personaId], {
+        shouldValidate: true,
+        shouldDirty: true,
+      });
     }
   };
 
@@ -263,12 +267,13 @@ export default function ExperimentWizard({
           ) : (
             <div className="space-y-3">
               {personas.map((persona) => {
-                const isSelected = personasForm.watch('personas').includes(persona._id);
+                const selectedPersonas = personasForm.watch('personas');
+                const isSelected = selectedPersonas.includes(persona._id);
                 return (
-                  <div
+                  <label
                     key={persona._id}
-                    onClick={() => handlePersonaToggle(persona._id)}
-                    className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
+                    htmlFor={`persona-${persona._id}`}
+                    className={`block p-4 rounded-lg border-2 cursor-pointer transition-all ${
                       isSelected
                         ? 'border-blue-600 bg-blue-50'
                         : 'border-gray-200 bg-white hover:border-gray-300'
@@ -276,6 +281,7 @@ export default function ExperimentWizard({
                   >
                     <div className="flex items-start gap-3">
                       <input
+                        id={`persona-${persona._id}`}
                         type="checkbox"
                         checked={isSelected}
                         onChange={() => handlePersonaToggle(persona._id)}
@@ -286,7 +292,7 @@ export default function ExperimentWizard({
                         <p className="mt-1 text-sm text-gray-600">{persona.description}</p>
                       </div>
                     </div>
-                  </div>
+                  </label>
                 );
               })}
             </div>

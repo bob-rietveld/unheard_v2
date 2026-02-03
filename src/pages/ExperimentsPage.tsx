@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation, useQuery } from 'convex/react';
 import { api } from '../../convex/_generated/api';
+import { Id } from '../../convex/_generated/dataModel';
 import ExperimentWizard, { ExperimentFormData } from '../components/ExperimentWizard';
 import Button from '../components/ui/Button';
 import { Plus, Play, Eye } from 'lucide-react';
@@ -9,17 +10,43 @@ import { useNavigate } from 'react-router-dom';
 export default function ExperimentsPage() {
   const [showWizard, setShowWizard] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [userId, setUserId] = useState<Id<'users'> | null>(null);
   const navigate = useNavigate();
 
   const createExperiment = useMutation(api.experiments.create);
+  const getOrCreateUser = useMutation(api.users.getOrCreate);
 
-  // TODO: Get actual user ID from auth context
-  const mockUserId = 'mock-user-id' as any;
+  // Initialize user on mount
+  useEffect(() => {
+    const initUser = async () => {
+      try {
+        // For now, use a demo user. In production, this would come from auth
+        const id = await getOrCreateUser({
+          name: 'Demo User',
+          email: 'demo@example.com',
+        });
+        setUserId(id);
+      } catch (error) {
+        console.error('Failed to initialize user:', error);
+      }
+    };
+    initUser();
+  }, [getOrCreateUser]);
 
-  const experiments = useQuery(api.experiments.listByUser, { userId: mockUserId }) || [];
-  const personas = useQuery(api.personas.listByUser, { userId: mockUserId }) || [];
+  const experiments = useQuery(
+    api.experiments.listByUser,
+    userId ? { userId } : 'skip'
+  ) || [];
+  const personas = useQuery(
+    api.personas.listByUser,
+    userId ? { userId } : 'skip'
+  ) || [];
 
   const handleSubmit = async (data: ExperimentFormData) => {
+    if (!userId) {
+      console.error('User not initialized');
+      return;
+    }
     setIsSubmitting(true);
     try {
       await createExperiment({
@@ -27,7 +54,7 @@ export default function ExperimentsPage() {
         description: data.description,
         prompt: data.prompt,
         personas: data.personas as any,
-        userId: mockUserId,
+        userId,
       });
       setShowWizard(false);
     } catch (error) {
