@@ -3,9 +3,9 @@ import { cn } from '@/lib/utils';
 
 const navigation = [
   { name: 'Home', href: '/', end: true },
-  { name: 'Personas', href: '/personas', end: false },
-  { name: 'Experiments', href: '/experiments', end: false },
-  { name: 'Results', href: '/results', end: false },
+  { name: 'Personas', href: '/personas' },
+  { name: 'Experiments', href: '/experiments' },
+  { name: 'Results', href: '/results' },
 ];
 
 export default function Layout() {
