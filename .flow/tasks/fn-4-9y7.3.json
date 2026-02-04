@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-02T21:35:59.904517Z",
+  "depends_on": [],
+  "epic": "fn-4-9y7",
+  "id": "fn-4-9y7.3",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-4-9y7.3.md",
+  "status": "todo",
+  "title": "Implement discovery agents (hypothesis, planner, analyst, elicitor)",
+  "updated_at": "2026-02-02T21:35:59.904604Z"
+}

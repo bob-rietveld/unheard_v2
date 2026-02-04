@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-02T21:35:59.777222Z",
+  "depends_on": [],
+  "epic": "fn-4-9y7",
+  "id": "fn-4-9y7.1",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-4-9y7.1.md",
+  "status": "todo",
+  "title": "Port MCTS engine from existing codebase (tree.ts, surprise.ts, beliefs.ts)",
+  "updated_at": "2026-02-02T21:35:59.777360Z"
+}
