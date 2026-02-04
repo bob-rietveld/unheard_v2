@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation, useQuery } from 'convex/react';
 import { api } from '../../convex/_generated/api';
+import { Id } from '../../convex/_generated/dataModel';
 import PersonaForm, { PersonaFormData } from '../components/PersonaForm';
 import Button from '../components/ui/Button';
 import { Plus } from 'lucide-react';
@@ -8,15 +9,38 @@ import { Plus } from 'lucide-react';
 export default function PersonasPage() {
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [userId, setUserId] = useState<Id<'users'> | null>(null);
 
   const createPersona = useMutation(api.personas.create);
+  const getOrCreateUser = useMutation(api.users.getOrCreate);
 
-  // TODO: Get actual user ID from auth context
-  const mockUserId = 'mock-user-id' as any;
+  // Initialize user on mount
+  useEffect(() => {
+    const initUser = async () => {
+      try {
+        // For now, use a demo user. In production, this would come from auth
+        const id = await getOrCreateUser({
+          name: 'Demo User',
+          email: 'demo@example.com',
+        });
+        setUserId(id);
+      } catch (error) {
+        console.error('Failed to initialize user:', error);
+      }
+    };
+    initUser();
+  }, [getOrCreateUser]);
 
-  const personas = useQuery(api.personas.listByUser, { userId: mockUserId }) || [];
+  const personas = useQuery(
+    api.personas.listByUser,
+    userId ? { userId } : 'skip'
+  ) || [];
 
   const handleSubmit = async (data: PersonaFormData) => {
+    if (!userId) {
+      console.error('User not initialized');
+      return;
+    }
     setIsSubmitting(true);
     try {
       await createPersona({
@@ -30,7 +54,7 @@ export default function PersonasPage() {
           painPoints: data.attributes.painPoints?.length ? data.attributes.painPoints : undefined,
           goals: data.attributes.goals?.length ? data.attributes.goals : undefined,
         },
-        userId: mockUserId,
+        userId,
       });
       setShowForm(false);
     } catch (error) {
